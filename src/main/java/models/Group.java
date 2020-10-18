@@ -43,4 +43,8 @@ public class Group {
 	public void setListOfExpenses(List<Expense> listOfExpenses) {
 		this.listOfExpenses = listOfExpenses;
 	}
+	
+	public void addListOfExpenses(List<Expense> listOfExpenses) {
+		this.listOfExpenses = listOfExpenses;
+	}
 }

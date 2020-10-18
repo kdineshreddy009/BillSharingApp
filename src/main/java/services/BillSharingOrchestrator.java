@@ -9,66 +9,58 @@ import models.Split;
 import models.User;
 
 public class BillSharingOrchestrator {
-
+	// Keeping groups in the App as static for simplicity
 	static List<Group> groupsInApp;
 
-	public BillSharingOrchestrator(List<Group> groupsInApp) {
-		this.groupsInApp = groupsInApp;
-	}
-
-	public List<Group> getGroupsInApp() {
+	public static List<Group> getGroupsInApp() {
 		return groupsInApp;
 	}
 
-	public void setGroupsInApp(List<Group> groupsInApp) {
-		this.groupsInApp = groupsInApp;
+	public static void setGroupsInApp(List<Group> groups) {
+		groupsInApp = groups;
 	}
 
 	public static void addBillToGroup(double totalCost, List<Split> splitsPerPerson, String groupName) {
-		System.out.println("splitsPerPerson");
-		for(Split x: splitsPerPerson) {
-			System.out.println(x.getSplitSharedAmount());
-		}
-		for (Group group : groupsInApp) {
+		List<Group> groups = BillSharingOrchestrator.getGroupsInApp();
+		for (Group group : groups) {
 			if (groupName.equals(group.getGroupName())) {
-				List<Expense> listOfExpenses = new ArrayList<Expense>();
+
+				List<Expense> listOfExpenses = group.getListOfExpenses() == null ? new ArrayList<Expense>()
+						: group.getListOfExpenses();
 				Expense expense = new Expense(totalCost, splitsPerPerson);
 				listOfExpenses.add(expense);
-				group.setListOfExpenses(listOfExpenses);
-				System.out.println("Added expense to group");
+				group.addListOfExpenses(listOfExpenses);
 			}
 		}
+		System.out.println("Added expense to group");
 	}
 
-	public static void totalBalancesOfUser(User user) {
-
-	}
+//	public static void totalBalancesOfUser(User user) {
+//
+//	}
 
 	public static void groupWiseBalancesOfUser(String userName, List<Group> listOfGroups) {
 		String totalAmountStr = "";
 		double totalAmount = 0;
-		for (Group group : groupsInApp) {
+		listOfGroups = BillSharingOrchestrator.getGroupsInApp();
+		for (Group group : listOfGroups) {
 			List<Expense> listOfExpensesInGroup = group.getListOfExpenses();
-			for (Expense exp : listOfExpensesInGroup) {
-				List<Split> splits = exp.getSplits();
-				for (Split split : splits) {
-					
-					System.out.println("split.getSplitSharedUser().equals(userName)");
-					System.out.println(split.getSplitSharedUser().equals(userName));
-					if (split.getSplitSharedUser().equals(userName)) {
-						totalAmountStr += "" + group.getGroupName() + "-" + split.getSplitSharedAmount();
-						totalAmount += split.getSplitSharedAmount();
+			if (listOfExpensesInGroup != null) {
+				for (Expense exp : listOfExpensesInGroup) {
+					List<Split> splits = exp.getSplits();
+					for (Split split : splits) {
+						if (split.getSplitSharedUser().equals(userName)) {
+							totalAmountStr += "" + group.getGroupName() + "-" + split.getSplitSharedAmount();
+							totalAmount += split.getSplitSharedAmount();
+						}
 					}
 				}
 			}
+
 		}
-//		Exception in thread "main" java.lang.NullPointerException
-//		at services.BillSharingOrchestrator.groupWiseBalancesOfUser(BillSharingOrchestrator.java:52)
-//		at Driver.main(Driver.java:80)
-		
-		System.out.println("*****");
+		System.out.println("Amount of User: " + userName + "groupwise");
 		System.out.println(totalAmountStr);
+		System.out.print("Total Amount of User: " + userName);
 		System.out.println(totalAmount);
-		System.out.println("*****");		
 	}
 }

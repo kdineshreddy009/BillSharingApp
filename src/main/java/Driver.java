@@ -29,7 +29,8 @@ public class Driver {
 		List<Group> listOfGroups = new ArrayList<Group>();
 		listOfGroups.add(g1);
 		listOfGroups.add(g2);
-		BillSharingOrchestrator billSharingOrchestrator = new BillSharingOrchestrator(listOfGroups);
+//		BillSharingOrchestrator billSharingOrchestrator = new BillSharingOrchestrator(listOfGroups);
+		BillSharingOrchestrator.setGroupsInApp(listOfGroups);
 
 		System.out.println("welcome to bill sharing app");
 		String isExit = "false";
@@ -44,26 +45,22 @@ public class Driver {
 //				System.out.println("***Adding Bill***");
 //				System.out.println("enter total amount:\n");
 //				double totalAmount = sc.nextDouble();
-				double totalAmount = 300;
-
 //				sc.nextLine();
 //				System.out.println("enter people-amount: \n");
 //				String amountPerHead = sc.nextLine();
-				String amountPerHead = "dinesh-100,dilip-200";
-
 //				System.out.println("enter group name: \n");
 //				String groupNameToAdd = sc.nextLine();
+				
+				double totalAmount = 300;
+				String amountPerHead = "dinesh-100,dilip-200";
 				String groupNameToAdd = "group1";
-
 				String[] splitInput = amountPerHead.split(",");
-
 				List<Split> splitsPerPerson = new ArrayList<Split>();
-
 				for (String s : splitInput) {
 					splitsPerPerson.add(new Split(s.split("-")[0], Double.parseDouble(s.split("-")[1])));
 				}
-				System.out.println("adding bill");
-				billSharingOrchestrator.addBillToGroup(totalAmount, splitsPerPerson, groupNameToAdd);
+				System.out.println("adding bill1");
+				BillSharingOrchestrator.addBillToGroup(totalAmount, splitsPerPerson, groupNameToAdd);
 				
 				
 				System.out.println("adding bill2");
@@ -73,11 +70,10 @@ public class Driver {
 				for (String s : splitInput) {
 					splitsPerPerson.add(new Split(s.split("-")[0], Double.parseDouble(s.split("-")[1])));
 				}
-				billSharingOrchestrator.addBillToGroup(500, splitsPerPerson,"group1");
-
+				BillSharingOrchestrator.addBillToGroup(500, splitsPerPerson,"group1");
 			} else if (userChoice.equals("GroupwiseBalances")) {
 				System.out.println("Getting Group wise Bill:");
-				billSharingOrchestrator.groupWiseBalancesOfUser("dinesh", listOfGroups);
+				BillSharingOrchestrator.groupWiseBalancesOfUser("dinesh", listOfGroups);
 			} else {
 				System.out.println("**Invalid Choice**");
 			}
