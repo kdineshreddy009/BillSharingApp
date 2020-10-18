@@ -38,6 +38,7 @@ multiple people registering bills at the same time.
 
 ## Requirement:
 Should support this using In-Memory DS constructs, use of DB not allowed.
+
 Expectations:
   1. Create the sample data yourself. You can put it into a file, test case or main driver program itself.
   2. Code should be demoable. Either by using a main driver program or test cases.
