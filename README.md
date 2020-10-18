@@ -1,4 +1,4 @@
-# BillSharingApp(I haven't implemented all the things, paused working on it)
+BillSharingApp(I haven't implemented all the things, paused working on it)
 
 Problem Definition:
 
@@ -28,8 +28,8 @@ respectively in order to balance out the bill.
 
 
 
-How to Test(will be updating it):
-- run Driver.java for i)adding an expense ii)retrieving expenses based on user
+    How to Test(will be updating it):
+    - run Driver.java for i)adding an expense ii)retrieving expenses based on user
 
 
 Bonus:
