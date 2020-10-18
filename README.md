@@ -26,6 +26,12 @@ Mudit, Sourav and Souvik. Mudit has paid 250 while Souvik shelled out 50 rupees 
 Thus, Mudit should get back 150 rupees while Sourav and Souvik need to give back 100 and 50 rupees
 respectively in order to balance out the bill.
 
+
+
+How to Test(will be updating it):
+- run Driver.java for i)adding an expense ii)retrieving expenses based on user
+
+
 Bonus:
 Support individual (person to person) balances. Also take care of concurrency issues that can arise out of
 multiple people registering bills at the same time.
