@@ -25,3 +25,28 @@ For example : Mudit registers a bill for lunch totalling 300 rupees. The bill is
 Mudit, Sourav and Souvik. Mudit has paid 250 while Souvik shelled out 50 rupees to complete the bill.
 Thus, Mudit should get back 150 rupees while Sourav and Souvik need to give back 100 and 50 rupees
 respectively in order to balance out the bill.
+
+Bonus:
+Support individual (person to person) balances. Also take care of concurrency issues that can arise out of
+multiple people registering bills at the same time.
+
+Requirement:
+Should support this using In-Memory DS constructs, use of DB not allowed.
+Expectations:
+  1. Create the sample data yourself. You can put it into a file, test case or main driver program itself.
+  2. Code should be demoable. Either by using a main driver program or test cases.
+  3. Code should be modular. Code should have basic OO design. Please do not jam in
+responsibilities of one class into another.
+  4. Code should be extensible. Wherever applicable, use interfaces and contracts between different
+  methods. It should be easy to add/remove functionality without re-writing entire codebase.
+  5. Code should handle edge cases properly and fail gracefully.
+  6. Code should be legible and readable
+
+Guidelines:
+
+  1. Please discuss the solution with an interviewer
+  2. Please do not access internet for anything EXCEPT syntax
+  3. You are free to use the language of your choice
+  4. All work is should be your own
+  5. Please focus on the Bonus Feature only after ensuring the required features are complete and
+  demoable.
