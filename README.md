@@ -1,4 +1,4 @@
-# BillSharingApp
+# BillSharingApp(I haven't implemented all the things, paused working on it)
 
 Problem Definition:
 
